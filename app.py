@@ -35,7 +35,7 @@ class risultatoRandomForest(Resource):
             #'p2': scom.data[:, 5],
             #'s2': scom.data[:, 6],
             #'r2': scom.data[:, 7],
-            #'ris': scom.target
+            'ris': scom.target
         })
         data.head()
 
