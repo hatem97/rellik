@@ -2,8 +2,6 @@ Flask
 gunicorn
 Click
 Flask-RESTful
-Jinja2
-pip
-sklearn
+
 
 
