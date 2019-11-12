@@ -11,6 +11,12 @@ joblib
 numpy
 pandas
 pip
+python-dateutil
+pytz
+scikit-learn
+scipy
+setuptools
+six
 
 
 
