@@ -102,4 +102,4 @@ class risultatoReteNeurale(Resource):
 api.add_resource(risultatoRandomForest, '/risultatoRandomForest/<v1>&<p1>&<s1>&<r1>&<v2>&<p2>&<s2>&<r2>&<squadra1>&<squadra2>') # Route_1
 api.add_resource(risultatoReteNeurale, '/risultatoReteNeurale/<v1>&<p1>&<s1>&<r1>&<v2>&<p2>&<s2>&<r2>&<squadra1>&<squadra2>') # Route_2
 if __name__ == '__main__':
-     app.run(port='5000')
+    app.run(debug=True, use_reloader=True)
