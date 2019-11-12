@@ -54,7 +54,7 @@ class risultatoRandomForest(Resource):
         predizione2 = clf.predict([[v1, p1, s1, r1]])
         #print(str(squadra1)+" vs "+str(squadra2)+"    1: "+str(predizione2[0,0]*100)+"% --- X: "+str(predizione2[0,2]*100)+"% --- 2: "+str(predizione2[0,1]*100)+"%")
         #return str(predizione2[0,])
-        return str(predizione2)
+        return str(predizione2[0])
 
 
 
