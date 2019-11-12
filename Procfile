@@ -1,1 +1,1 @@
-web: gunicorn app:scommesse --log-file=-
+web: gunicorn app:app --log-file=-
