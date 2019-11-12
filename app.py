@@ -24,22 +24,23 @@ app = Flask(__name__)
 api = Api(app)
 
 class risultatoRandomForest(Resource):
-    def get(self,v1,p1,s1,r1,v2,p2,s2,r2, squadra1, squadra2):
-
+    #def get(self,v1,p1,s1,r1,v2,p2,s2,r2, squadra1, squadra2):
+    def get(self,v1,p1,s1,r1):
         data = pd.DataFrame({
             'v1': scom.data[:, 0],
             'p1': scom.data[:, 1],
             's1': scom.data[:, 2],
             'r1': scom.data[:, 3],
-            'v2': scom.data[:, 4],
-            'p2': scom.data[:, 5],
-            's2': scom.data[:, 6],
-            'r2': scom.data[:, 7],
-            'ris': scom.target
+            #'v2': scom.data[:, 4],
+            #'p2': scom.data[:, 5],
+            #'s2': scom.data[:, 6],
+            #'r2': scom.data[:, 7],
+            #'ris': scom.target
         })
         data.head()
 
-        X = data[['v1', 'p1', 's1', 'r1', 'v2', 'p2', 's2', 'r2']]  # Features
+        #X = data[['v1', 'p1', 's1', 'r1', 'v2', 'p2', 's2', 'r2']]  # Features
+        X = data[['v1', 'p1', 's1', 'r1']]  # Features
         y = data['ris']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1)
 
@@ -49,7 +50,8 @@ class risultatoRandomForest(Resource):
         #print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
 
         print("------------------------------------------")
-        predizione2 = clf.predict_proba([[v1, p1, s1, r1, v2, p2, s2, r2]])
+        #predizione2 = clf.predict_proba([[v1, p1, s1, r1, v2, p2, s2, r2]])
+        predizione2 = clf.predict([[v1, p1, s1, r1]])
         print(str(squadra1)+" vs "+str(squadra2)+"    1: "+str(predizione2[0,0]*100)+"% --- X: "+str(predizione2[0,2]*100)+"% --- 2: "+str(predizione2[0,1]*100)+"%")
         return str(predizione2[0,])
 
@@ -99,7 +101,8 @@ class risultatoReteNeurale(Resource):
         return str(predictions[0,])
 
 
-api.add_resource(risultatoRandomForest, '/risultatoRandomForest/<v1>&<p1>&<s1>&<r1>&<v2>&<p2>&<s2>&<r2>&<squadra1>&<squadra2>') # Route_1
+#api.add_resource(risultatoRandomForest, '/risultatoRandomForest/<v1>&<p1>&<s1>&<r1>&<v2>&<p2>&<s2>&<r2>&<squadra1>&<squadra2>') # Route_1
+api.add_resource(risultatoRandomForest, '/risultatoRandomForest/<v1>&<p1>&<s1>&<r1>') # Route_1
 api.add_resource(risultatoReteNeurale, '/risultatoReteNeurale/<v1>&<p1>&<s1>&<r1>&<v2>&<p2>&<s2>&<r2>&<squadra1>&<squadra2>') # Route_2
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
