@@ -99,7 +99,7 @@ class risultatoReteNeurale(Resource):
             predictions[0, 2] * 100) + "% --- 2: " + str(predictions[0, 1] * 100) + "%")
         print(confusion_matrix(y_test, y_pred))
 
-        return (predictions[0,)
+        return str(predictions[0,])
 
 
 #api.add_resource(risultatoRandomForest, '/risultatoRandomForest/<v1>&<p1>&<s1>&<r1>&<v2>&<p2>&<s2>&<r2>&<squadra1>&<squadra2>') # Route_1
